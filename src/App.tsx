@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+import { useEffect, useState } from 'react';
+import { BottomScrollListener } from 'react-bottom-scroll-listener';
+
+import MainContainer from './components/MainContainer';
+import { storeArtworkIDs } from './utils';
+
+const App = () => {
+  const [index, setIndex] = useState<number>();
+
+  useEffect(() => {
+    (async () => {
+      await storeArtworkIDs();
+      setIndex(0);
+    })();
+  }, []);
+
+  if (index === undefined) return null;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <MainContainer idx={index}></MainContainer>
+      <BottomScrollListener onBottom={() => setIndex(index + 1)} />
     </div>
   );
-}
+};
 
 export default App;
