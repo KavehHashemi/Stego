@@ -8,3 +8,11 @@ export type IDs = {
   total: number;
   objectIDs: number[];
 };
+
+export type Department = {
+  departmentId: number;
+  displayName: string;
+};
+export type Departments = {
+  departments: Department[];
+};

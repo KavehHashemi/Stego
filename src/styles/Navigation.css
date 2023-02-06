@@ -1,0 +1,23 @@
+.toolbar {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 33% 33% 33%;
+}
+
+.left {
+    display: flex;
+    justify-content: center;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    font-size: larger;
+    font-weight: bolder;
+    font-stretch: expanded;
+}
+
+.right {
+    display: flex;
+    justify-content: center;
+}
