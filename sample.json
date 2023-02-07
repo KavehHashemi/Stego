@@ -1,0 +1,93 @@
+{
+    "objectID": 435648,
+    "isHighlight": false,
+    "accessionNumber": "90.30",
+    "accessionYear": "1890",
+    "isPublicDomain": true,
+    "primaryImage": "https://images.metmuseum.org/CRDImages/ep/original/DP-22990-001.jpg",
+    "primaryImageSmall": "https://images.metmuseum.org/CRDImages/ep/web-large/DP-22990-001.jpg",
+    "additionalImages": [],
+    "constituents": [
+        {
+            "constituentID": 162844,
+            "role": "Artist",
+            "name": "Gyula Benczúr",
+            "constituentULAN_URL": "http://vocab.getty.edu/page/ulan/500013687",
+            "constituentWikidata_URL": "https://www.wikidata.org/wiki/Q632046",
+            "gender": ""
+        }
+    ],
+    "department": "European Paintings",
+    "objectName": "Painting",
+    "title": "Project for a Room for King Ludwig II (1854–1886) of Bavaria",
+    "culture": "",
+    "period": "",
+    "dynasty": "",
+    "reign": "",
+    "portfolio": "",
+    "artistRole": "Artist",
+    "artistPrefix": "",
+    "artistDisplayName": "Gyula Benczúr",
+    "artistDisplayBio": "Hungarian, Nyíregyháza 1844–1920 Dolány",
+    "artistSuffix": "",
+    "artistAlphaSort": "Benczúr, Gyula",
+    "artistNationality": "Hungarian",
+    "artistBeginDate": "1844",
+    "artistEndDate": "1920",
+    "artistGender": "",
+    "artistWikidata_URL": "https://www.wikidata.org/wiki/Q632046",
+    "artistULAN_URL": "http://vocab.getty.edu/page/ulan/500013687",
+    "objectDate": "",
+    "objectBeginDate": 1864,
+    "objectEndDate": 1920,
+    "medium": "Oil on canvas",
+    "dimensions": "30 3/4 x 39 1/2 in. (78.1 x 100.3 cm)",
+    "measurements": [
+        {
+            "elementName": "Overall",
+            "elementDescription": null,
+            "elementMeasurements": {
+                "Height": 78.1,
+                "Width": 100.3
+            }
+        }
+    ],
+    "creditLine": "Gift of Frederick Loeser, 1890",
+    "geographyType": "",
+    "city": "",
+    "state": "",
+    "county": "",
+    "country": "",
+    "region": "",
+    "subregion": "",
+    "locale": "",
+    "locus": "",
+    "excavation": "",
+    "river": "",
+    "classification": "Paintings",
+    "rightsAndReproduction": "",
+    "linkResource": "",
+    "metadataDate": "2022-02-09T04:42:08.947Z",
+    "repository": "Metropolitan Museum of Art, New York, NY",
+    "objectURL": "https://www.metmuseum.org/art/collection/search/435648",
+    "tags": [
+        {
+            "term": "Interiors",
+            "AAT_URL": "http://vocab.getty.edu/page/aat/300391239",
+            "Wikidata_URL": "https://www.wikidata.org/wiki/Q2998430"
+        },
+        {
+            "term": "Tables",
+            "AAT_URL": "http://vocab.getty.edu/page/aat/300039548",
+            "Wikidata_URL": "https://www.wikidata.org/wiki/Q14748"
+        },
+        {
+            "term": "Chairs",
+            "AAT_URL": "http://vocab.getty.edu/page/aat/300037772",
+            "Wikidata_URL": "https://www.wikidata.org/wiki/Q15026"
+        }
+    ],
+    "objectWikidata_URL": "https://www.wikidata.org/wiki/Q19913249",
+    "isTimelineWork": false,
+    "GalleryNumber": ""
+}
