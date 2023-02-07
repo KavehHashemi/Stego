@@ -1,5 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable array-callback-return */
+import '../styles/Navigation.css';
+
 import Checkbox from '@mui/material/Checkbox';
 import ListItem from '@mui/material/ListItem';
 import { useEffect, useState } from 'react';
@@ -58,7 +60,12 @@ const DrawerComponent = ({ setOpen, setId, id }: props) => {
     setCheckboxes(objects);
   }, [departments]);
 
-  return <div>{checkboxes}</div>;
+  return (
+    <div>
+      <div className="drawer-header">The Metropolitan Museum of Art</div>
+      <div>{checkboxes}</div>
+    </div>
+  );
 };
 
 export default DrawerComponent;

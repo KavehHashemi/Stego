@@ -1,11 +1,12 @@
 import '../styles/Navigation.css';
 
+import UpIcon from '@mui/icons-material/ArrowUpwardRounded';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { departmentsdb } from '../db/Artworks';
 import DrawerComponent from './DrawerComponent';
@@ -16,23 +17,21 @@ type props = {
 };
 const Navigation = ({ departmentId, setDepartmentId }: props) => {
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
-  const [departmentName, setDepartmentName] = useState<string | undefined>("");
+  const [departmentName, setDepartmentName] = useState<string>("");
 
   useEffect(() => {
     (async () => {
       let x = await departmentsdb.departments
         .filter((dep) => dep.departmentId === departmentId)
         .toArray();
-      setDepartmentName(x[0].displayName);
+      console.log(`x[0].departmentId is ${x[0].departmentId}`);
+      console.log(`departmentId is ${departmentId}`);
+      if (x) setDepartmentName(x[0].displayName);
     })();
   }, [departmentId]);
   return (
-    <>
-      <AppBar
-        sx={{ backgroundColor: "#000000cc", borderBottom: "1px solid #383838" }}
-        // className="appbar"
-        position="fixed"
-      >
+    <div>
+      <AppBar className="appbar" position="fixed">
         <Toolbar className="toolbar">
           <div className="left">
             <IconButton
@@ -45,7 +44,13 @@ const Navigation = ({ departmentId, setDepartmentId }: props) => {
             </IconButton>
           </div>
           <div className="center">{departmentName}</div>
-          <div className="right"></div>
+          <div className="right">
+            <a href="#top">
+              <IconButton size="large" edge="end" color="inherit">
+                <UpIcon></UpIcon>
+              </IconButton>
+            </a>
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -59,7 +64,7 @@ const Navigation = ({ departmentId, setDepartmentId }: props) => {
           id={departmentId}
         ></DrawerComponent>
       </Drawer>
-    </>
+    </div>
   );
 };
 

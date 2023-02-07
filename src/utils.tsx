@@ -9,7 +9,7 @@ async function request<TResponse>(url: string): Promise<TResponse> {
 
 const fetchArtworkIDs = async (departmentId: number): Promise<IDs> => {
   let ids = await request<IDs>(
-    // "https://collectionapi.metmuseum.org/public/collection/v1/search?isHighlight=true&isPublicDomain=true&hasImages=true&medium=Paintings&q=%22%22"
+    // "https://collectionapi.metmuseum.org/public/collection/v1/search?isHighlight=true&isPublicDomain=true&hasImages=true&medium=Paintings&q=%22q%22"
     // "https://collectionapi.metmuseum.org/public/collection/v1/search?isHighlight=true&isPublicDomain=true&hasImages=true&departmentIds=17&q=%22%22"
     `https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=${departmentId}`
   );
@@ -39,13 +39,10 @@ const fetchArtwork = async (id: number): Promise<Artwork> => {
 };
 
 export const storeArtworkIDs = async (id: number) => {
-  // if ((await idsDB.ids.count()) === 0) {
   let ids = await fetchArtworkIDs(id);
   await idsDB.ids.clear();
   let a = await idsDB.ids.add(ids);
-  console.log(a);
   return a as number;
-  // }
 };
 
 export const getDBSize = async (dbNumber: number) => {

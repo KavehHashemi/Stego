@@ -28,14 +28,7 @@ const App = () => {
 
   if (index === undefined) return null;
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        flexWrap: "nowrap",
-        gap: "1rem",
-      }}
-    >
+    <div>
       <Navigation
         departmentId={departmentId}
         setDepartmentId={setDepartmentId}

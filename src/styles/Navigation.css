@@ -1,12 +1,17 @@
+.appbar {
+    background-color: #000000cc !important;
+    border-bottom: 1px solid #383838;
+}
+
 .toolbar {
-    display: grid;
+    display: grid !important;
     justify-content: space-between;
     grid-template-columns: 33% 33% 33%;
 }
 
 .left {
     display: flex;
-    justify-content: center;
+    justify-content: left;
 }
 
 .center {
@@ -19,5 +24,16 @@
 
 .right {
     display: flex;
+    justify-content: right;
+}
+
+.drawer-header {
+    display: flex;
+    padding: 1.5rem 1rem;
+    font-size: large;
+    font-weight: 700;
     justify-content: center;
+    color: white;
+    background-color: black;
+    border-bottom: 1px solid #383838;
 }
