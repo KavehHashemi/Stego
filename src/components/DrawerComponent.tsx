@@ -34,8 +34,8 @@ const DrawerComponent = ({ setOpen, setId, id }: props) => {
   }, []);
 
   const handleChecked = (id: number) => {
-    setChecked({ ...checked, [id]: true });
     setId(id);
+    setChecked({ ...checked, [id]: true });
     setOpen(false);
   };
 

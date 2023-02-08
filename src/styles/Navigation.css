@@ -6,7 +6,7 @@
 .toolbar {
     display: grid !important;
     justify-content: space-between;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 15% 70% 15%;
 }
 
 .left {

@@ -4,19 +4,22 @@ export type Artwork = {
   artistDisplayName: string;
   primaryImageSmall: string;
   ////
-  isPublicDomain: boolean;
-  primaryImage: string;
-  additionalImages: string[];
-  department: string;
-  objectName: string;
-  objectDate: string;
-  artistDisplayBio: string;
+  //artist
   artistNationality: string;
   artistBeginDate: string;
   artistEndDate: string;
-  artistWikidata_URL: string;
+  artistDisplayBio: string;
+  //artwork
+  primaryImage: string;
+  objectDate: string;
   medium: string;
   dimensions: string;
+  department: string;
+  objectName: string;
+  ////
+  isPublicDomain: boolean;
+  additionalImages: string[];
+  artistWikidata_URL: string;
   objectWikidata_URL: string;
 };
 export type IDs = {
