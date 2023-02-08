@@ -1,6 +1,6 @@
 import '../styles/SingleArtwork.css';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { Artwork } from '../../types';
 import DialogComponent from './DialogComponent';
@@ -17,7 +17,7 @@ const SingleArtwork = ({ artwork }: props) => {
         <div className="card" onClick={() => setOpenDialog(true)}>
           <div className="header">
             <div>{artwork.title}</div>
-            <div>{artwork.objectDate}</div>
+            {/* <div>{artwork.objectDate}</div> */}
           </div>
           <div className="content">
             <img src={artwork.primaryImageSmall} alt="" width={"100%"}></img>

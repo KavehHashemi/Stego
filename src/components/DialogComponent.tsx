@@ -24,12 +24,12 @@ const DialogComponent = ({ open, setOpen, artwork }: props) => {
       <Header className="dialog-header">
         {artwork.title}
         <IconButton onClick={() => setOpen(false)}>
-          <CloseIcon sx={{ color: "#c5c5c5" }}></CloseIcon>
+          <CloseIcon sx={{ color: "#fff" }}></CloseIcon>
         </IconButton>
       </Header>
       <Content className="dialog-content">
         <a href={artwork.primaryImage} target="_blank" rel="noreferrer">
-          <img src={artwork.primaryImageSmall} alt="" className="image"></img>
+          <img src={artwork.primaryImage} alt="" className="image"></img>
         </a>
       </Content>
       <Footer className="dialog-footer">
@@ -52,7 +52,7 @@ const DialogComponent = ({ open, setOpen, artwork }: props) => {
               <div id="right">{artwork.dimensions}</div>
             </div>
             <div>
-              <div id="left">Object Name:</div>
+              <div id="left">Type:</div>
               <div id="right">{artwork.objectName}</div>
             </div>
             <div>
@@ -73,51 +73,59 @@ const DialogComponent = ({ open, setOpen, artwork }: props) => {
             </div>
             <div>
               <div id="left">Birth-Death:</div>
-              {artwork.artistBeginDate}-{artwork.artistEndDate}
+              {artwork.artistBeginDate}
+              {artwork.artistBeginDate !== "" && artwork.artistEndDate !== ""
+                ? "-"
+                : ""}
+              {artwork.artistEndDate}
             </div>
             <div>
               <div id="left">Bio:</div>
               <div id="right">{artwork.artistDisplayBio}</div>
             </div>
             <div></div>
-            {/* <div>
-              <div id="left">
-              </div>
-            </div> */}
           </div>
           <div>
-            <Button
-              href={artwork.artistWikidata_URL}
-              target="_blank"
-              rel="noreferrer"
-              variant="text"
-              title="Artist's WikiData"
-              sx={{
-                color: "#c5c5c5",
-                fontSize: "12px",
-                fontStretch: "expanded",
-                padding: "0 1rem 0 0",
-              }}
-            >
-              <div style={{ marginRight: "6px" }}>Artist's WikiData</div>
-              <LinkIcon sx={{ color: "#00ccff", fontSize: "1rem" }}></LinkIcon>
-            </Button>
-            <Button
-              href={artwork.objectWikidata_URL}
-              target="_blank"
-              rel="noreferrer"
-              variant="text"
-              title="Artwork's WikiData"
-              sx={{
-                color: "#c5c5c5",
-                fontSize: "12px",
-                fontStretch: "expanded",
-                padding: "0 1rem 0 0",
-              }}
-            >
-              <div style={{ marginRight: "6px" }}>Artworks's WikiData</div>
-              <LinkIcon sx={{ color: "#00ccff", fontSize: "1rem" }}></LinkIcon>
-            </Button>
+            {artwork.artistWikidata_URL !== "" && (
+              <Button
+                href={artwork.artistWikidata_URL}
+                target="_blank"
+                rel="noreferrer"
+                variant="text"
+                title="Artist's WikiData"
+                sx={{
+                  color: "#c5c5c5",
+                  fontSize: "12px",
+                  fontStretch: "expanded",
+                  padding: "0 1rem 0 0",
+                }}
+              >
+                <div style={{ marginRight: "6px" }}>Artist's WikiData</div>
+                <LinkIcon
+                  sx={{ color: "#00ccff", fontSize: "1rem" }}
+                ></LinkIcon>
+              </Button>
+            )}
+            {artwork.objectWikidata_URL !== "" && (
+              <Button
+                href={artwork.objectWikidata_URL}
+                target="_blank"
+                rel="noreferrer"
+                variant="text"
+                title="Artwork's WikiData"
+                sx={{
+                  color: "#c5c5c5",
+                  fontSize: "12px",
+                  fontStretch: "expanded",
+                  padding: "0 1rem 0 0",
+                }}
+              >
+                <div style={{ marginRight: "6px" }}>Artwork's WikiData</div>
+                <LinkIcon
+                  sx={{ color: "#00ccff", fontSize: "1rem" }}
+                ></LinkIcon>
+              </Button>
+            )}
           </div>
         </div>
       </Footer>
