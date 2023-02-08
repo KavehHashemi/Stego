@@ -34,6 +34,7 @@ const MainContainer = ({ idx, dbNumber }: props) => {
   }, [idx]);
 
   useEffect(() => {
+    setCollection([]);
     (async () => {
       let a = await getCollection(idx, dbNumber);
       setCollection(a);
@@ -60,12 +61,16 @@ const MainContainer = ({ idx, dbNumber }: props) => {
         </div>
       ) : (
         <div
-          style={{
-            width: "100%",
-            color: "navy",
-          }}
+          style={
+            {
+              // width: "100%",
+              // color: "navy",
+            }
+          }
         >
-          <LinearProgress sx={{ height: "2px" }}></LinearProgress>
+          <LinearProgress
+            sx={{ height: "2px", backgroundColor: "#000" }}
+          ></LinearProgress>
         </div>
       )}
     </div>

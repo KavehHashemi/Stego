@@ -27,6 +27,34 @@
     justify-content: right;
 }
 
+/* DRAWER */
+/* width */
+::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: #383838;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: lightgray;
+    border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: whitesmoke;
+}
+
+.drawer {
+    overflow-y: hidden;
+    border-right: 1px solid #383838;
+}
+
 .drawer-header {
     display: flex;
     padding: 1.5rem 1rem;
@@ -36,4 +64,43 @@
     color: white;
     background-color: black;
     border-bottom: 1px solid #383838;
+}
+
+.drawer-content {
+    overflow-y: scroll;
+    max-height: calc(100vh - 146px);
+    color: white;
+    background-color: black;
+}
+
+.drawer-footer {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    justify-content: left;
+    gap: 0.5rem;
+    color: white;
+    background-color: black;
+    border-top: 1px solid #383838;
+}
+
+.drawer-item-checked {
+    padding: 1rem !important;
+    color: #fff;
+    /* background-color: #383838; */
+    background-color: #161616;
+    border-left: 2px solid #00ccff;
+    cursor: pointer;
+}
+
+.drawer-item-unchecked {
+    padding: 1rem !important;
+    color: #c5c5c5;
+    background-color: #000;
+    cursor: pointer;
+}
+
+.drawer-item-unchecked:hover {
+    color: #c5c5c5;
+    background-color: #161616;
 }

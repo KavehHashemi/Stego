@@ -2,7 +2,8 @@
 /* eslint-disable array-callback-return */
 import '../styles/Navigation.css';
 
-import Checkbox from '@mui/material/Checkbox';
+import GithubIcon from '@mui/icons-material/GitHub';
+import IconButton from '@mui/material/IconButton';
 import ListItem from '@mui/material/ListItem';
 import { useEffect, useState } from 'react';
 
@@ -32,8 +33,8 @@ const DrawerComponent = ({ setOpen, setId, id }: props) => {
     })();
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>, id: number) => {
-    setChecked({ ...checked, [id]: e.target.checked });
+  const handleChecked = (id: number) => {
+    setChecked({ ...checked, [id]: true });
     setId(id);
     setOpen(false);
   };
@@ -47,13 +48,20 @@ const DrawerComponent = ({ setOpen, setId, id }: props) => {
   useEffect(() => {
     departments.map((d) => {
       objects.push(
-        <ListItem key={d.departmentId} style={{ backgroundColor: "#000" }}>
-          <Checkbox
-            sx={{ color: "#c5c5c5" }}
-            checked={checked[d.departmentId]}
-            onChange={(e) => handleChange(e, d.departmentId)}
-          ></Checkbox>
-          <div style={{ color: "#c5c5c5" }}>{d.displayName}</div>
+        <ListItem
+          key={d.departmentId}
+          className={
+            checked[d.departmentId]
+              ? "drawer-item-checked"
+              : "drawer-item-unchecked"
+          }
+        >
+          <div
+            key={d.departmentId}
+            onClick={() => handleChecked(d.departmentId)}
+          >
+            {d.displayName}
+          </div>
         </ListItem>
       );
     });
@@ -61,9 +69,22 @@ const DrawerComponent = ({ setOpen, setId, id }: props) => {
   }, [departments]);
 
   return (
-    <div>
+    <div className="drawer">
       <div className="drawer-header">The Metropolitan Museum of Art</div>
-      <div>{checkboxes}</div>
+      <div className="drawer-content">{checkboxes}</div>
+      <a
+        className="drawer-footer"
+        href="https://github.com/KavehHashemi/museum-website-ts"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <div>
+          <IconButton>
+            <GithubIcon sx={{ color: "#c5c5c5" }}></GithubIcon>
+          </IconButton>
+        </div>
+        <div>GitHub</div>
+      </a>
     </div>
   );
 };

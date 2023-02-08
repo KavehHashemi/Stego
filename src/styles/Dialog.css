@@ -5,6 +5,7 @@
     align-items: center;
     background-color: #000;
     color: #c5c5c5;
+    border-bottom: 1px solid #383838;
 }
 
 .dialog-content {
@@ -15,11 +16,11 @@
 }
 
 .dialog-footer {
-    display: flex;
-    justify-content: left;
-    padding-inline: 1rem;
+    justify-content: left !important;
+    padding-inline: 1rem !important;
     background-color: #000;
     color: #c5c5c5;
+    border-top: 1px solid #383838;
 }
 
 .image {
