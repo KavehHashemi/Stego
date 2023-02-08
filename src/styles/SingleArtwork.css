@@ -18,13 +18,15 @@
 .header {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   padding: 1rem 1.5rem;
   align-items: left;
   border-bottom: 1px solid #383838;
 }
 
 .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0;
 }
 

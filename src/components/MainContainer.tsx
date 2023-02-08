@@ -41,6 +41,12 @@ const MainContainer = ({ idx, dbNumber }: props) => {
     })();
   }, [dbNumber]);
 
+  useEffect(() => {
+    collection.map((c) => {
+      console.log(`item: ${c.primaryImageSmall}`);
+    });
+  }, [collection]);
+
   return (
     <div>
       <div className="container">
