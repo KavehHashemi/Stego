@@ -6,17 +6,27 @@
 .toolbar {
     display: grid !important;
     justify-content: space-between;
-    grid-template-columns: 15% 70% 15%;
+    grid-template-columns: auto auto;
+    /* grid-template-columns: 25% 50% 25%; */
 }
 
 .left {
     display: flex;
     justify-content: left;
+    gap: 1rem;
 }
 
-.center {
+/* .center {
     display: flex;
     justify-content: center;
+    font-size: larger;
+    font-weight: bolder;
+    font-stretch: expanded;
+} */
+.center {
+    display: flex;
+    justify-content: left;
+    align-items: center;
     font-size: larger;
     font-weight: bolder;
     font-stretch: expanded;
@@ -25,6 +35,7 @@
 .right {
     display: flex;
     justify-content: right;
+    align-items: center;
 }
 
 /* DRAWER */
@@ -104,4 +115,41 @@
 .drawer-item-unchecked:hover {
     color: #c5c5c5;
     background-color: #161616;
+}
+
+/* .search {
+    outline: none;
+    background-color: inherit;
+    border: none;
+    color: #c5c5c5;
+    padding-inline: 0.5rem;
+    width: 250px;
+    font-size: 14px;
+    display: flex;
+    transition: 0.5s linear;
+    height: 2rem;
+}
+
+.search:focus {
+    background-color: #383838;
+    border-radius: 4px 4px 0 0;
+    border-bottom: 1px solid #00ccff;
+} */
+
+.myTextField {
+    /* color: #00ccff; */
+    /* background-color: #383838; */
+
+}
+
+.myTextField>label {
+    color: #c5c5c5;
+}
+
+.myTextField>label:focus {
+    color: #c5c5c5;
+}
+
+.myTextField>div {
+    color: #c5c5c5;
 }

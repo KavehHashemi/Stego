@@ -1,6 +1,6 @@
 import '../styles/Navigation.css';
 
-import UpIcon from '@mui/icons-material/ArrowUpwardRounded';
+import UpIcon from '@mui/icons-material/ArrowUpward';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
 import Drawer from '@mui/material/Drawer';
@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 import { departmentsdb } from '../db/Artworks';
 import DrawerComponent from './DrawerComponent';
 
+// import SearchIcon from '@mui/icons-material/SearchRounded';
 type props = {
   setDepartmentId: React.Dispatch<React.SetStateAction<number>>;
   departmentId: number;
@@ -18,6 +19,25 @@ type props = {
 const Navigation = ({ departmentId, setDepartmentId }: props) => {
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
   const [departmentName, setDepartmentName] = useState<string>("");
+  // const [searchParam, setSearchParam] = useState<string>("");
+  // const Search = () => {
+  //   console.log(`search for ${searchParam}`);
+  // };
+
+  // const CssTextField = styled(TextField)({
+  //   "& label.Mui-focused": {
+  //     color: "#c5c5c5",
+  //   },
+  //   "& MuiInputLabel-root": {
+  //     color: "#00ccff",
+  //   },
+  //   "& label.Mui": {
+  //     color: "#00ccff",
+  //   },
+  //   "& .MuiInput-underline:after": {
+  //     borderBottomColor: "#00ccff",
+  //   },
+  // });
 
   useEffect(() => {
     (async () => {
@@ -42,9 +62,59 @@ const Navigation = ({ departmentId, setDepartmentId }: props) => {
             >
               <MenuIcon />
             </IconButton>
+            <div className="center">{departmentName}</div>
           </div>
-          <div className="center">{departmentName}</div>
+          {/* <div className="center">{departmentName}</div> */}
           <div className="right">
+            {/* <CssTextField
+              className="myTextField"
+              variant="standard"
+              label="Search"
+              id="search-input"
+            /> */}
+            {/* <input
+              className="search"
+              title="search"
+              placeholder="search"
+              value={searchParam}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                setSearchParam(event.target.value);
+              }}
+            ></input>
+            <SearchIcon
+              style={{ cursor: "pointer" }}
+              onClick={() => Search()}
+            ></SearchIcon> */}
+            {/* {searchParam !== "" ? <SearchIcon></SearchIcon> : null} */}
+            {/* <TextField
+              label="Search"
+              variant="standard"
+              fullWidth
+              sx={{ color: "#c5c5c5", border: "1px solid #c5c5c5" }}
+              value={searchParam}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                setSearchParam(event.target.value);
+              }}
+            /> */}
+            {/* <FormControl
+              color="info"
+              fullWidth
+              sx={{ m: 1 }}
+              variant="standard"
+            >
+              <InputLabel color="info" htmlFor="standard-adornment-amount">
+                Search
+              </InputLabel>
+              <Input
+                id="standard-adornment-amount"
+                startAdornment={
+                  <InputAdornment
+                    position="start"
+                    color="info"
+                  ></InputAdornment>
+                }
+              />
+            </FormControl> */}
             <a href="#top">
               <IconButton size="large" edge="end" color="inherit">
                 <UpIcon></UpIcon>

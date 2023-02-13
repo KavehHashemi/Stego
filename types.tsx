@@ -21,6 +21,8 @@ export type Artwork = {
   additionalImages: string[];
   artistWikidata_URL: string;
   objectWikidata_URL: string;
+  country: string;
+  geographyType: string;
 };
 export type IDs = {
   total: number;

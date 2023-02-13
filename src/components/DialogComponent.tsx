@@ -59,6 +59,10 @@ const DialogComponent = ({ open, setOpen, artwork }: props) => {
               <div id="left">Department:</div>
               <div id="right">{artwork.department}</div>
             </div>
+            <div>
+              <div id="left">{artwork.geographyType}:</div>
+              <div id="right">{artwork.country}</div>
+            </div>
           </div>
         </div>
         <div className="footer-columns">

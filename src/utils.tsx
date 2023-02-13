@@ -10,7 +10,7 @@ async function request<TResponse>(url: string): Promise<TResponse> {
 const fetchArtworkIDs = async (departmentId: number): Promise<IDs> => {
   let ids = await request<IDs>(
     // "https://collectionapi.metmuseum.org/public/collection/v1/search?isHighlight=true&isPublicDomain=true&hasImages=true&medium=Paintings&q=%22q%22"
-    // "https://collectionapi.metmuseum.org/public/collection/v1/search?isHighlight=true&isPublicDomain=true&hasImages=true&departmentIds=17&q=%22%22"
+    // `https://collectionapi.metmuseum.org/public/collection/v1/search?isPublicDomain=true&hasImages=true&departmentIds=${departmentId}&q=%22%22`
     `https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=${departmentId}`
   );
   return ids;
@@ -49,6 +49,26 @@ export const getDBSize = async (dbNumber: number) => {
   let count = await idsDB.ids.get(dbNumber);
   if (count) return count.total;
   else return -1;
+};
+
+export const storeSearchedIDs = async (
+  searchParam: string,
+  departmentId: number
+) => {
+  let ids = await searchArtworks(searchParam, departmentId);
+  await idsDB.ids.clear();
+  let a = await idsDB.ids.add(ids);
+  return a as number;
+};
+export const searchArtworks = async (
+  searchParam: string,
+  departmentId: number
+): Promise<IDs> => {
+  let ids = await request<IDs>(
+    `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&departmentIds=${departmentId}&q=${searchParam}`
+  );
+  console.log(`total searched artworks ${ids.total}`);
+  return ids;
 };
 
 const N = 6;

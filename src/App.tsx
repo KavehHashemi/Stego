@@ -5,6 +5,7 @@ import { BottomScrollListener } from 'react-bottom-scroll-listener';
 
 import MainContainer from './components/MainContainer';
 import Navigation from './components/Navigation';
+import SearchComponent from './components/SearchComponent';
 import { storeArtworkIDs, storeDepartments } from './utils';
 
 const App = () => {
@@ -26,6 +27,12 @@ const App = () => {
     })();
   }, [departmentId]);
 
+  useEffect(() => {
+    (async () => {
+      setIndex(0);
+    })();
+  }, [dbNumber]);
+
   if (index === undefined) return null;
   return (
     <div>
@@ -33,7 +40,15 @@ const App = () => {
         departmentId={departmentId}
         setDepartmentId={setDepartmentId}
       ></Navigation>
-      <MainContainer idx={index} dbNumber={dbNumber}></MainContainer>
+      <SearchComponent
+        departmentId={departmentId}
+        setDbNumber={setDbNumber}
+      ></SearchComponent>
+      <MainContainer
+        idx={index}
+        dbNumber={dbNumber}
+        // departmentId={departmentId}
+      ></MainContainer>
       <BottomScrollListener onBottom={() => setIndex(index + 1)} />
     </div>
   );
