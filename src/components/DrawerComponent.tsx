@@ -70,7 +70,7 @@ const DrawerComponent = ({ setOpen, setId, id }: props) => {
 
   return (
     <div className="drawer">
-      <div className="drawer-header">The Metropolitan Museum of Art</div>
+      <div className="drawer-header">Not The Metropolitan Museum of Art</div>
       <div className="drawer-content">{checkboxes}</div>
       <a
         className="drawer-footer"
