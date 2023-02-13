@@ -13,7 +13,13 @@ const SingleArtwork = ({ artwork }: props) => {
   const [openDialog, setOpenDialog] = useState(false);
   return (
     <>
-      <div className="card" onClick={() => setOpenDialog(true)}>
+      <div
+        className="card"
+        onClick={() => {
+          console.log(artwork);
+          setOpenDialog(true);
+        }}
+      >
         <div className="header">
           <div>{artwork.title}</div>
         </div>

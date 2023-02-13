@@ -11,26 +11,14 @@ import { Artwork } from '../../types';
 import { getCollection, getDBSize } from '../utils';
 import ArtworksList from './ArtworksList';
 
-// import SearchIcon from '@mui/icons-material/SearchRounded';
 type props = {
   idx: number;
   dbNumber: number;
-  // departmentId: number;
 };
 
 const MainContainer = ({ idx, dbNumber }: props) => {
   const [collection, setCollection] = useState<Artwork[]>([]);
   const [DBCount, setDBCount] = useState<number>(-1);
-
-  // const [searchParam, setSearchParam] = useState<string>("");
-  // const Search = async () => {
-  //   if (searchParam !== "") {
-  //     console.log(`searching for ${searchParam}`);
-  //     let x = await storeSearchedIDs(searchParam, departmentId);
-  //     let a = await getCollection(idx, x);
-  //     setCollection(a);
-  //   }
-  // };
 
   useEffect(() => {
     (async () => {
@@ -62,22 +50,6 @@ const MainContainer = ({ idx, dbNumber }: props) => {
 
   return (
     <div className="">
-      {/* <div className="search-container">
-        <input
-          className="search"
-          title="search"
-          placeholder="search"
-          value={searchParam}
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            setSearchParam(event.target.value);
-          }}
-        ></input>
-        <SearchIcon
-          sx={{ color: "#c5c5c5" }}
-          style={{ cursor: "pointer" }}
-          onClick={() => Search()}
-        ></SearchIcon>
-      </div> */}
       <div className="container">
         <ArtworksList artworks={collection}></ArtworksList>
       </div>
