@@ -65,9 +65,9 @@ export const searchArtworks = async (
   departmentId: number
 ): Promise<IDs> => {
   let ids = await request<IDs>(
-    `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&departmentIds=${departmentId}&q=${searchParam}`
+    `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&departmentId=${departmentId}&q=${searchParam}`
   );
-  console.log(`total searched artworks ${ids.total}`);
+  console.log(`${ids.total} artworks found`);
   return ids;
 };
 
