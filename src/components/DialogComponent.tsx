@@ -59,10 +59,12 @@ const DialogComponent = ({ open, setOpen, artwork }: props) => {
               <div id="left">Department:</div>
               <div id="right">{artwork.department}</div>
             </div>
-            <div>
-              <div id="left">Country:</div>
-              <div id="right">{artwork.country}</div>
-            </div>
+            {artwork.country !== "" ? (
+              <div>
+                <div id="left">Country:</div>
+                <div id="right">{artwork.country}</div>
+              </div>
+            ) : null}
           </div>
         </div>
         <div className="footer-columns">

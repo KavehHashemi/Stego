@@ -21,10 +21,14 @@ const MainContainer = ({ idx, dbNumber }: props) => {
   const [DBCount, setDBCount] = useState<number>(-1);
 
   useEffect(() => {
+    console.log(`dbnumber is ${dbNumber}`);
+    setCollection([]);
     (async () => {
       setDBCount(await getDBSize(dbNumber));
+      let a = await getCollection(idx, dbNumber);
+      setCollection(a);
     })();
-  }, []);
+  }, [dbNumber]);
 
   useEffect(() => {
     console.log(`index is ${idx}`);
@@ -35,18 +39,14 @@ const MainContainer = ({ idx, dbNumber }: props) => {
   }, [idx]);
 
   useEffect(() => {
-    setCollection([]);
-    (async () => {
-      let a = await getCollection(idx, dbNumber);
-      setCollection(a);
-    })();
-  }, [dbNumber]);
-
-  useEffect(() => {
     collection.map((c) => {
       // console.log(`item: ${c.primaryImageSmall}`);
     });
   }, [collection]);
+
+  useEffect(() => {
+    // console.log(`dbcount is ${DBCount}`);
+  }, [DBCount]);
 
   return (
     <div className="">

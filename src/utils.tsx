@@ -13,6 +13,7 @@ const fetchArtworkIDs = async (departmentId: number): Promise<IDs> => {
     // `https://collectionapi.metmuseum.org/public/collection/v1/search?isPublicDomain=true&hasImages=true&departmentIds=${departmentId}&q=%22%22`
     `https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=${departmentId}`
   );
+  // ids.objectIDs = ids.objectIDs.sort();
   return ids;
 };
 
@@ -41,7 +42,10 @@ const fetchArtwork = async (id: number): Promise<Artwork> => {
 export const storeArtworkIDs = async (id: number) => {
   let ids = await fetchArtworkIDs(id);
   await idsDB.ids.clear();
-  let a = await idsDB.ids.add(ids);
+  let a = await idsDB.ids.put(ids, 1);
+  // let a = await idsDB.ids.add(ids, 1);
+  console.log(`dbnumber is ${a}`);
+
   return a as number;
 };
 
@@ -58,7 +62,8 @@ export const storeSearchedIDs = async (
   let ids = await searchArtworks(searchParam, departmentId);
   await idsDB.ids.clear();
   let a = await idsDB.ids.add(ids);
-  return a as number;
+  let x = [a as number, ids.total];
+  return x;
 };
 export const searchArtworks = async (
   searchParam: string,

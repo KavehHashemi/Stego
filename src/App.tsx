@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import './App.css';
 
 import { useEffect, useState } from 'react';
@@ -6,12 +7,15 @@ import { BottomScrollListener } from 'react-bottom-scroll-listener';
 import MainContainer from './components/MainContainer';
 import Navigation from './components/Navigation';
 import SearchComponent from './components/SearchComponent';
-import { storeArtworkIDs, storeDepartments } from './utils';
+import { storeArtworkIDs, storeDepartments, storeSearchedIDs } from './utils';
 
 const App = () => {
   const [index, setIndex] = useState<number>();
   const [dbNumber, setDbNumber] = useState<number>(1);
   const [departmentId, setDepartmentId] = useState<number>(11);
+
+  const [searchParam, setSearchParam] = useState<string | undefined>("");
+  const [resultsCount, setResultsCount] = useState<number | undefined>();
 
   useEffect(() => {
     (async () => {
@@ -20,18 +24,32 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    console.log(`departmentID is ${departmentId}`);
     (async () => {
       let dbnumber = await storeArtworkIDs(departmentId);
       setDbNumber(dbnumber);
+      setSearchParam(undefined);
+      setResultsCount(undefined);
       setIndex(0);
     })();
   }, [departmentId]);
 
   useEffect(() => {
     (async () => {
-      setIndex(0);
+      if (searchParam !== "" && searchParam !== undefined) {
+        console.log(`searching for ${searchParam}`);
+        let x = await storeSearchedIDs(searchParam, departmentId);
+        setDbNumber(x[0]);
+        setResultsCount(x[1]);
+        setIndex(0);
+      } else if (searchParam === "") {
+        let dbnumber = await storeArtworkIDs(departmentId);
+        setDbNumber(dbnumber);
+        setResultsCount(undefined);
+        setIndex(0);
+      }
     })();
-  }, [dbNumber]);
+  }, [searchParam]);
 
   if (index === undefined) return null;
   return (
@@ -41,14 +59,10 @@ const App = () => {
         setDepartmentId={setDepartmentId}
       ></Navigation>
       <SearchComponent
-        departmentId={departmentId}
-        setDbNumber={setDbNumber}
+        setSearchParam={setSearchParam}
+        resultsCount={resultsCount}
       ></SearchComponent>
-      <MainContainer
-        idx={index}
-        dbNumber={dbNumber}
-        // departmentId={departmentId}
-      ></MainContainer>
+      <MainContainer idx={index} dbNumber={dbNumber}></MainContainer>
       <BottomScrollListener onBottom={() => setIndex(index + 1)} />
     </div>
   );
