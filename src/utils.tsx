@@ -1,12 +1,6 @@
 import { Artwork, Departments, IDs } from '../types';
 import { departmentsdb, idsDB } from './db/Artworks';
 
-async function request<TResponse>(url: string): Promise<TResponse> {
-  const response = await fetch(url);
-  const data = await response.json();
-  return data as TResponse;
-}
-
 const fetchArtworkIDs = async (departmentId: number): Promise<IDs> => {
   let ids = await request<IDs>(
     // "https://collectionapi.metmuseum.org/public/collection/v1/search?isHighlight=true&isPublicDomain=true&hasImages=true&medium=Paintings&q=%22q%22"
@@ -113,3 +107,10 @@ const getNArtworks = async (pack: number[]) => {
   }
   return data;
 };
+
+////////////////////
+export async function request<TResponse>(url: string): Promise<TResponse> {
+  const response = await fetch(url);
+  const data = await response.json();
+  return data as TResponse;
+}
