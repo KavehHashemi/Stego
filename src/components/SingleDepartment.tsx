@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Department } from '../../types';
 import { useAppDispatch } from '../hooks';
 import { setCurrentDepartment } from '../store/departments';

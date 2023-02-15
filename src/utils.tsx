@@ -114,3 +114,8 @@ export async function request<TResponse>(url: string): Promise<TResponse> {
   const data = await response.json();
   return data as TResponse;
 }
+
+export const initializeIDsDB = async () => {
+  await idsDB.ids.add({ objectIDs: [], total: 0 }, 1);
+  // await idsDB.ids.add({ids:[]}, 1);
+};

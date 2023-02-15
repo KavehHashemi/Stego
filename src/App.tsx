@@ -7,10 +7,15 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useAppSelector } from './hooks';
 import Departments from './pages/Departments';
 import Home from './pages/Home';
+import { initializeIDsDB } from './utils';
 
 const App = () => {
   const { currentDepartment } = useAppSelector((state) => state.departments);
-
+  useEffect(() => {
+    (async () => {
+      await initializeIDsDB();
+    })();
+  }, []);
   return (
     <Router>
       <Routes>
