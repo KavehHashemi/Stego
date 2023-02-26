@@ -5,9 +5,11 @@ import { idsDB } from '../db/Artworks';
 import { request } from '../utils';
 
 type initialStateType = {
-  artworksCount: number;
+  artworksCount: number | null;
+  index: number;
 };
-const initialState: initialStateType = { artworksCount: 0 };
+
+const initialState: initialStateType = { artworksCount: null, index: 0 };
 
 export const getDepartmentsArtworks = createAsyncThunk(
   "artworks/getDepartmentsArtworks",
@@ -18,19 +20,30 @@ export const getDepartmentsArtworks = createAsyncThunk(
     return ids;
   }
 );
+
 export const artworksSlice = createSlice({
   name: "artworks",
   initialState,
-  reducers: {},
+  reducers: {
+    IncrementIndex: (state) => {
+      state.index++;
+      console.log(`state.index is ${state.index}`);
+    },
+    ResetIndex: (state) => {
+      state.index = 0;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getDepartmentsArtworks.fulfilled, (state, action) => {
-      idsDB.ids.update(1, action.payload).then(() => {
-        state.artworksCount = action.payload.total;
-      });
-      console.log(`count is ${state.artworksCount}`);
+      idsDB.ids.update(1, action.payload);
+      state.artworksCount = action.payload.total;
+    });
+
+    builder.addCase(getDepartmentsArtworks.rejected, (state, action) => {
+      console.log(`error: ${action.error}`);
     });
   },
 });
 
-export const {} = artworksSlice.actions;
+export const { IncrementIndex, ResetIndex } = artworksSlice.actions;
 export default artworksSlice.reducer;

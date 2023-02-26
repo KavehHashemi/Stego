@@ -3,20 +3,21 @@
 import { useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../hooks';
-import { getDepartmentsArtworks } from '../store/artworks';
 import SingleDepartment from './SingleDepartment';
 
+// import { getDepartmentsArtworks } from '../store/artworks';
 const DepartmentsList = () => {
   const { departments, currentDepartment } = useAppSelector(
     (state) => state.departments
   );
+
   let departmentObjects: JSX.Element[] = [];
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    if (currentDepartment)
-      dispatch(getDepartmentsArtworks(currentDepartment.departmentId));
-  }, [currentDepartment]);
+  // useEffect(() => {
+  //   if (currentDepartment)
+  //     dispatch(getDepartmentsArtworks(currentDepartment.departmentId));
+  // }, [currentDepartment]);
 
   departments?.departments.map((dep) => {
     departmentObjects.push(

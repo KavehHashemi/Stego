@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 import { Department } from '../../types';
 import { useAppDispatch } from '../hooks';
 import { setCurrentDepartment } from '../store/departments';
@@ -21,7 +24,9 @@ const SingleDepartment = ({ department }: props) => {
       }}
       onClick={() => setCurrentDep(department.departmentId)}
     >
-      <div>{department.displayName}</div>
+      <Link to={`/departments/${department.departmentId}`}>
+        <div>{department.displayName}</div>
+      </Link>
     </div>
   );
 };
