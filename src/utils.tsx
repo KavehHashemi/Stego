@@ -123,16 +123,16 @@ export const initializeIDsDB = async () => {
 
 const N = 6;
 
-export const getCollection = async (idx: number): Promise<Artwork[]> => {
-  let pack: number[] = [];
-  let index = idx * N;
-  let ids = await idsDB.ids.get(1);
-  if (ids?.objectIDs) {
-    pack = getNIds(ids?.objectIDs, index);
-  }
-  let data = await getNArtworks(pack);
-  return data;
-};
+// export const getCollection = async (idx: number): Promise<Artwork[]> => {
+//   let pack: number[] = [];
+//   let index = idx * N;
+//   let ids = await idsDB.ids.get(1);
+//   if (ids?.objectIDs) {
+//     pack = getNIds(ids?.objectIDs, index);
+//   }
+//   let data = await getNArtworks(pack);
+//   return data;
+// };
 
 const getNIds = (array: number[], index: number): number[] => {
   let pack: number[] = [];

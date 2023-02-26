@@ -1,15 +1,20 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import { IDs } from '../../types';
+import { Artwork, IDs } from '../../types';
 import { idsDB } from '../db/Artworks';
 import { request } from '../utils';
 
 type initialStateType = {
   artworksCount: number | null;
   index: number;
+  collection: Artwork[];
 };
 
-const initialState: initialStateType = { artworksCount: null, index: 0 };
+const initialState: initialStateType = {
+  artworksCount: null,
+  index: 0,
+  collection: [],
+};
 
 export const getDepartmentsArtworks = createAsyncThunk(
   "artworks/getDepartmentsArtworks",
@@ -20,6 +25,49 @@ export const getDepartmentsArtworks = createAsyncThunk(
     return ids;
   }
 );
+
+const N = 6;
+
+export const getCollections = createAsyncThunk(
+  "artworks/getCollections",
+  async (idx: number): Promise<Artwork[]> => {
+    let pack: number[] = [];
+    let index = idx * N;
+    let ids = await idsDB.ids.get(1);
+    if (ids?.objectIDs) {
+      pack = getNIds(ids?.objectIDs, index);
+    }
+    let data = await getNArtworks(pack);
+    return data;
+  }
+);
+
+const getNIds = (array: number[], index: number): number[] => {
+  let pack: number[] = [];
+  let m: number = N;
+  if (index + N > array.length) {
+    m = array.length - index;
+  }
+  for (let i = index; i < index + m; i++) {
+    pack.push(array[i]);
+  }
+  return pack;
+};
+
+const getNArtworks = async (pack: number[]) => {
+  let data: Artwork[] = [];
+  for (let i = 0; i < pack.length; i++) {
+    let x = await fetchArtwork(pack[i]);
+    data.push(x);
+  }
+  return data;
+};
+
+const fetchArtwork = async (id: number): Promise<Artwork> => {
+  let url = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`;
+  let artwork = await request<Artwork>(url);
+  return artwork;
+};
 
 export const artworksSlice = createSlice({
   name: "artworks",
@@ -32,18 +80,28 @@ export const artworksSlice = createSlice({
     ResetIndex: (state) => {
       state.index = 0;
     },
+    ResetCollection: (state) => {
+      state.collection = [];
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getDepartmentsArtworks.fulfilled, (state, action) => {
+      console.log(`fulfilled`);
       idsDB.ids.update(1, action.payload);
       state.artworksCount = action.payload.total;
     });
-
+    builder.addCase(getDepartmentsArtworks.pending, (state, action) => {
+      console.log(`pending`);
+    });
     builder.addCase(getDepartmentsArtworks.rejected, (state, action) => {
       console.log(`error: ${action.error}`);
+    });
+    builder.addCase(getCollections.fulfilled, (state, action) => {
+      state.collection.concat(action.payload);
     });
   },
 });
 
-export const { IncrementIndex, ResetIndex } = artworksSlice.actions;
+export const { IncrementIndex, ResetIndex, ResetCollection } =
+  artworksSlice.actions;
 export default artworksSlice.reducer;

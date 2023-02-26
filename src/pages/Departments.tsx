@@ -1,35 +1,35 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { BottomScrollListener } from 'react-bottom-scroll-listener';
 
-import { Artwork } from '../../types';
 import ArtworksList from '../components/ArtworksList';
 import { useAppDispatch, useAppSelector } from '../hooks';
-import { getDepartmentsArtworks, IncrementIndex, ResetIndex } from '../store/artworks';
-import { getCollection } from '../utils';
+import { getCollections, getDepartmentsArtworks, IncrementIndex, ResetCollection, ResetIndex } from '../store/artworks';
 
 const Departments = () => {
   const dispatch = useAppDispatch();
 
   const { currentDepartment } = useAppSelector((state) => state.departments);
-  const { artworksCount, index } = useAppSelector((state) => state.artworks);
-
-  const [collection, setCollection] = useState<Artwork[]>([]);
+  const { artworksCount, index, collection } = useAppSelector(
+    (state) => state.artworks
+  );
 
   useEffect(() => {
-    if (currentDepartment) {
-      setCollection([]);
-      dispatch(ResetIndex());
-      console.log(`current department is ${currentDepartment.displayName}`);
-      dispatch(getDepartmentsArtworks(currentDepartment.departmentId));
-    }
+    (async () => {
+      if (currentDepartment) {
+        await dispatch(getDepartmentsArtworks(currentDepartment.departmentId));
+        console.log(`current department is ${currentDepartment.displayName}`);
+      }
+    })();
+    dispatch(ResetCollection());
+    dispatch(ResetIndex());
   }, [currentDepartment]);
 
   useEffect(() => {
     console.log(`index is ${index}`);
     (async () => {
-      let a = await getCollection(index);
-      setCollection(collection.concat(a));
+      dispatch(getCollections(index));
+      // let a = await getCollection(index);
+      // setCollection(collection.concat(a));
     })();
   }, [index]);
 
