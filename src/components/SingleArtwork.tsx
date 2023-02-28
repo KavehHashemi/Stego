@@ -1,9 +1,9 @@
-import '../styles/SingleArtwork.css';
+import "../styles/SingleArtwork.css";
 
-import { useState } from 'react';
+import { useState } from "react";
 
-import { Artwork } from '../../types';
-import DialogComponent from './DialogComponent';
+import { Artwork } from "../../types";
+import DialogComponent from "./DialogComponent";
 
 type props = {
   artwork: Artwork;
@@ -11,6 +11,7 @@ type props = {
 
 const SingleArtwork = ({ artwork }: props) => {
   const [openDialog, setOpenDialog] = useState(false);
+
   return (
     <>
       <div
@@ -25,7 +26,11 @@ const SingleArtwork = ({ artwork }: props) => {
         </div>
         <div className="content">
           {artwork.primaryImageSmall !== "" ? (
-            <img src={artwork.primaryImageSmall} alt="" width={"100%"}></img>
+            <img
+              src={artwork.primaryImageSmall}
+              alt={artwork.title}
+              width={"100%"}
+            ></img>
           ) : (
             <div
               style={{

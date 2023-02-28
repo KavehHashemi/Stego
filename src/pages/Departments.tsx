@@ -1,9 +1,16 @@
-import { useEffect, useState } from 'react';
-import { BottomScrollListener } from 'react-bottom-scroll-listener';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
+import { BottomScrollListener } from "react-bottom-scroll-listener";
 
-import ArtworksList from '../components/ArtworksList';
-import { useAppDispatch, useAppSelector } from '../hooks';
-import { getCollections, getDepartmentsArtworks, IncrementIndex, ResetCollection, ResetIndex } from '../store/artworks';
+import ArtworksList from "../components/ArtworksList";
+import { useAppDispatch, useAppSelector } from "../hooks";
+import {
+  getCollections,
+  getDepartmentsArtworks,
+  IncrementIndex,
+  ResetCollection,
+  ResetIndex,
+} from "../store/artworks";
 
 const Departments = () => {
   const dispatch = useAppDispatch();
@@ -15,19 +22,17 @@ const Departments = () => {
 
   useEffect(() => {
     (async () => {
+      dispatch(ResetCollection());
+      dispatch(ResetIndex());
       if (currentDepartment) {
         await dispatch(getDepartmentsArtworks(currentDepartment.departmentId));
-        console.log(`current department is ${currentDepartment.displayName}`);
       }
     })();
-    dispatch(ResetCollection());
-    dispatch(ResetIndex());
   }, [currentDepartment]);
 
   useEffect(() => {
-    console.log(`index is ${index}`);
     (async () => {
-      dispatch(getCollections(index));
+      await dispatch(getCollections(index));
       // let a = await getCollection(index);
       // setCollection(collection.concat(a));
     })();
@@ -37,8 +42,7 @@ const Departments = () => {
     <>
       <div className="container">
         <div>{currentDepartment?.displayName}</div>
-        <div>{artworksCount}</div>
-
+        <div>{artworksCount} items</div>
         <div className="container">
           <ArtworksList artworks={collection}></ArtworksList>
         </div>

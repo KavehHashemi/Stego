@@ -1,17 +1,17 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { Artwork, IDs } from '../../types';
-import { idsDB } from '../db/Artworks';
-import { request } from '../utils';
+import { Artwork, IDs } from "../../types";
+import { idsDB } from "../db/Artworks";
+import { request } from "../utils";
 
 type initialStateType = {
-  artworksCount: number | null;
+  artworksCount: number;
   index: number;
   collection: Artwork[];
 };
 
 const initialState: initialStateType = {
-  artworksCount: null,
+  artworksCount: 0,
   index: 0,
   collection: [],
 };
@@ -86,19 +86,19 @@ export const artworksSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getDepartmentsArtworks.fulfilled, (state, action) => {
-      console.log(`fulfilled`);
       idsDB.ids.update(1, action.payload);
       state.artworksCount = action.payload.total;
     });
-    builder.addCase(getDepartmentsArtworks.pending, (state, action) => {
-      console.log(`pending`);
-    });
+    builder.addCase(getDepartmentsArtworks.pending, (state, action) => {});
     builder.addCase(getDepartmentsArtworks.rejected, (state, action) => {
       console.log(`error: ${action.error}`);
     });
-    builder.addCase(getCollections.fulfilled, (state, action) => {
-      state.collection.concat(action.payload);
-    });
+    builder.addCase(
+      getCollections.fulfilled,
+      (state: initialStateType, action) => {
+        action.payload.map((res) => state.collection.push(res));
+      }
+    );
   },
 });
 

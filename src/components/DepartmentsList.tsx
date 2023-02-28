@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable array-callback-return */
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
-import { useAppDispatch, useAppSelector } from '../hooks';
-import SingleDepartment from './SingleDepartment';
+import { useAppSelector } from "../hooks";
+import SingleDepartment from "./SingleDepartment";
 
 // import { getDepartmentsArtworks } from '../store/artworks';
 const DepartmentsList = () => {
@@ -12,7 +12,7 @@ const DepartmentsList = () => {
   );
 
   let departmentObjects: JSX.Element[] = [];
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
 
   // useEffect(() => {
   //   if (currentDepartment)

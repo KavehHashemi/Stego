@@ -1,5 +1,5 @@
-import { Artwork, Departments, IDs } from '../types';
-import { departmentsdb, idsDB } from './db/Artworks';
+import { Artwork, Departments, IDs } from "../types";
+import { departmentsdb, idsDB } from "./db/Artworks";
 
 const fetchArtworkIDs = async (departmentId: number): Promise<IDs> => {
   let ids = await request<IDs>(
@@ -121,7 +121,7 @@ export const initializeIDsDB = async () => {
   }
 };
 
-const N = 6;
+//const N = 6;
 
 // export const getCollection = async (idx: number): Promise<Artwork[]> => {
 //   let pack: number[] = [];
@@ -134,23 +134,23 @@ const N = 6;
 //   return data;
 // };
 
-const getNIds = (array: number[], index: number): number[] => {
-  let pack: number[] = [];
-  let m: number = N;
-  if (index + N > array.length) {
-    m = array.length - index;
-  }
-  for (let i = index; i < index + m; i++) {
-    pack.push(array[i]);
-  }
-  return pack;
-};
+// const getNIds = (array: number[], index: number): number[] => {
+//   let pack: number[] = [];
+//   let m: number = N;
+//   if (index + N > array.length) {
+//     m = array.length - index;
+//   }
+//   for (let i = index; i < index + m; i++) {
+//     pack.push(array[i]);
+//   }
+//   return pack;
+// };
 
-const getNArtworks = async (pack: number[]) => {
-  let data: Artwork[] = [];
-  for (let i = 0; i < pack.length; i++) {
-    let x = await fetchArtwork(pack[i]);
-    data.push(x);
-  }
-  return data;
-};
+// const getNArtworks = async (pack: number[]) => {
+//   let data: Artwork[] = [];
+//   for (let i = 0; i < pack.length; i++) {
+//     let x = await fetchArtwork(pack[i]);
+//     data.push(x);
+//   }
+//   return data;
+// };
