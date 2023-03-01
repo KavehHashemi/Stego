@@ -80,8 +80,9 @@ export const artworksSlice = createSlice({
     ResetIndex: (state) => {
       state.index = 0;
     },
-    ResetCollection: (state) => {
+    ResetCollection: (state: initialStateType) => {
       state.collection = [];
+      console.log(`state.collection is ${state.collection}`);
     },
   },
   extraReducers: (builder) => {

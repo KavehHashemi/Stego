@@ -5,7 +5,11 @@ import { useEffect } from "react";
 import { useAppSelector } from "../hooks";
 import SingleDepartment from "./SingleDepartment";
 
-// import { getDepartmentsArtworks } from '../store/artworks';
+// import {
+//   getDepartmentsArtworks,
+//   ResetCollection,
+//   ResetIndex,
+// } from "../store/artworks";
 const DepartmentsList = () => {
   const { departments, currentDepartment } = useAppSelector(
     (state) => state.departments
@@ -15,6 +19,9 @@ const DepartmentsList = () => {
   // const dispatch = useAppDispatch();
 
   // useEffect(() => {
+  //   console.log(`current department is ${currentDepartment?.displayName}`);
+  //   dispatch(ResetCollection);
+  //   dispatch(ResetIndex);
   //   if (currentDepartment)
   //     dispatch(getDepartmentsArtworks(currentDepartment.departmentId));
   // }, [currentDepartment]);

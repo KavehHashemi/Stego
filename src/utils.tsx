@@ -37,7 +37,7 @@ export const storeArtworkIDs = async (id: number) => {
   let ids = await fetchArtworkIDs(id);
   await idsDB.ids.clear();
   let a = await idsDB.ids.put(ids, 1);
-  // let a = await idsDB.ids.add(ids, 1);
+  // let b = await idsDB.ids.put(ids,1);
   console.log(`dbnumber is ${a}`);
 
   return a as number;

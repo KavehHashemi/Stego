@@ -49,6 +49,7 @@ const SingleArtwork = ({ artwork }: props) => {
         </div>
         <div className="footer">
           <div>{artwork.artistDisplayName}</div>
+          <div>{artwork.department}</div>
         </div>
       </div>
       {openDialog ? (

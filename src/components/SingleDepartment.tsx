@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
-import { Department } from '../../types';
-import { useAppDispatch } from '../hooks';
-import { setCurrentDepartment } from '../store/departments';
+import { Department } from "../../types";
+import { useAppDispatch } from "../hooks";
+import { setCurrentDepartment } from "../store/departments";
 
 type props = {
   department: Department;
@@ -11,6 +11,8 @@ type props = {
 const SingleDepartment = ({ department }: props) => {
   const dispatch = useAppDispatch();
   const setCurrentDep = (departmentID: number) => {
+    // dispatch(ResetCollection);
+    // dispatch(ResetIndex);
     dispatch(setCurrentDepartment(departmentID));
   };
 
