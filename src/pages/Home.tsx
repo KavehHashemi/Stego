@@ -1,15 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
-import DepartmentsList from '../components/DepartmentsList';
-import { useAppDispatch } from '../hooks';
-import { getDepartments } from '../store/departments';
+import DepartmentsList from "../components/DepartmentsList";
+import { useAppDispatch } from "../hooks";
+import { ResetIndex } from "../store/artworks";
+import { getDepartments } from "../store/departments";
 
 const Home = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(getDepartments());
-  }, []);
+    dispatch(ResetIndex());
+  });
   return (
     <div
       style={{

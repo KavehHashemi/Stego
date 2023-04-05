@@ -79,6 +79,7 @@ export const artworksSlice = createSlice({
     },
     ResetIndex: (state) => {
       state.index = 0;
+      ResetCollection();
     },
     ResetCollection: (state: initialStateType) => {
       state.collection = [];
