@@ -1,0 +1,13 @@
+@use "Departments";
+@use "Artworks";
+body {
+    font-family: "transyl", "Segoe UI", Inter, system-ui, Avenir, Helvetica;
+    line-height: 1.5;
+    font-weight: 400;
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+    background-color: #020202;
+}

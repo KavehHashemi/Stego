@@ -1,0 +1,25 @@
+@import "variables";
+
+.artworks-container {
+    display: flex;
+    flex-direction: column;
+    gap: $medium;
+}
+.header {
+    display: flex;
+    justify-content: space-around;
+    gap: $big;
+}
+.cards-container {
+    display: grid;
+    grid-template-columns: 15vw 15vw 15vw 15vw 15vw 15vw;
+    gap: $small;
+}
+.artwork-card {
+    display: flex;
+    flex-direction: column;
+    gap: $small;
+    background-color: rgba($color: #fff, $alpha: 0.1);
+    border-radius: $small;
+    padding-block: $medium;
+}

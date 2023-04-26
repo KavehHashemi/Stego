@@ -1,0 +1,17 @@
+$small: 0.5rem;
+$medium: 1rem;
+$big: 3rem;
+
+@font-face {
+    font-family: "Transyl";
+    src: url("fonts/Transyl-BoldItalic.woff") format("woff"), url("fonts/Transyl-BoldItalic.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Butler";
+    src: url("fonts/Butler.woff") format("woff"), url("fonts/Butler.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}

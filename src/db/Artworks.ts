@@ -1,6 +1,6 @@
 import Dexie, { Table } from 'dexie';
 
-import { Department, IDs } from '../../types';
+import { IDs } from '../utils/types';
 
 export class IDsDB extends Dexie {
   ids!: Table<IDs>;
@@ -13,17 +13,3 @@ export class IDsDB extends Dexie {
 }
 
 export const idsDB = new IDsDB();
-
-//////////////
-
-export class departmentsDB extends Dexie {
-  departments!: Table<Department>;
-  constructor() {
-    super("departmentsDB");
-    this.version(1).stores({
-      departments: "++id",
-    });
-  }
-}
-
-export const departmentsdb = new departmentsDB();
